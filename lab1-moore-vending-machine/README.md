@@ -19,12 +19,20 @@ Design Logic:
 5. After dispensing, the machine will stay in the dispense state until a manual reset is applied. This reset simulates the signal normally provided by the vending mechanism.
 # Folder Hierarchy
 ## sources
-### [a link] lab1-moore-vending-machine/srcs/top_FSM.v - provided
-/top_FSM.v the vending machine design. This file includes a top_FSM module that maps and connects lab1_FSM.v, clkgen.v, and seven_seg.v
-### lab1_FSM.v
-### clkgen.v - provided
-### seven_seg.v - provided
+[top_FSM.v](srcs/top_FSM.v) - provided  
+A top-level integration module provided to me. It connects the core FSM design, lab1_FSM.v, with supporting modules for clock division and I/O display, clkgen.v and seven_seg.v respectively. Includes an internal state signal 'wire[1:0] st' to observe output of lab1_FSM.v during testbench simulation.
+
+[lab1_FSM.v](srcs/lab1_FSM.v)  
+Core FSM design logic. Defined state (st) parameters INIT, S50c, VEND, and RETURN for better readability. Initialised next state(nst), for synchronous transition logic. Implemented a simple flip-flop sequential logic block that sets st to INIT when reset is asserted, otherwise, st follows a switch-case combinational logic block that updates nst according to current st (Moore machine concept). Additionally, defined nst = st by default and indicated a default case nst = INIT to prevent latches and completely ensure predictable behaviour.
+
+[clkgen.v](srcs/clkgen.v) - provided  
+A slow clock generator module provided to me. The board's clock is passed to clkgen.v, which produces a slower clock that drives the FSM to allow observable state transitions by ensuring stable button interactions. The board's clock runs at 100MHz, a
+
+[seven_seg.v](srcs/seven_seg.v) - provided  
+
+
 ## testbench
-### lab1_FSM_tb.v
+[lab1_FSM_tb.v](tb/lab1_FSM_tb.v)
+
 ## constraints
-### Lab1.xdc - provided
+[Lab1.xdc](constraints/Lab1.xdc) - provided
