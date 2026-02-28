@@ -19,7 +19,7 @@ Design Logic:
 5. After dispensing, the machine will stay in the dispense state until a manual reset is applied. This reset simulates the signal normally provided by the vending mechanism.
 # Folder Hierarchy
 ## sources
-### top_FSM.v - provided
+### [a link] lab1-moore-vending-machine/srcs/top_FSM.v - provided
 /top_FSM.v the vending machine design. This file includes a top_FSM module that maps and connects lab1_FSM.v, clkgen.v, and seven_seg.v
 ### lab1_FSM.v
 ### clkgen.v - provided
